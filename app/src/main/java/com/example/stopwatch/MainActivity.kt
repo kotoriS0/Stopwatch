@@ -15,26 +15,32 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        Log.v(TAG, "onCreate")
     }
 
     override fun onStart() {
         super.onStart()
-        Log.d(TAG, "onStart: ")
+        Log.d(TAG, "onStart")
     }
 
     override fun onResume() {
         super.onResume()
+        Log.i(TAG, "onResume")
     }
 
     override fun onPause() {
         super.onPause()
+        Log.w(TAG, "onPause")
     }
 
     override fun onStop() {
         super.onStop()
+        Log.e(TAG, "onStop")
     }
 
     override fun onDestroy() {
         super.onDestroy()
+        Log.wtf(TAG, "onDestroy")
     }
 }
