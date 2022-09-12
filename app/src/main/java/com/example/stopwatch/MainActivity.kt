@@ -19,6 +19,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var start: Button
     lateinit var reset: Button
 
+    var time = 0L
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -29,10 +31,12 @@ class MainActivity : AppCompatActivity() {
 
         start.setOnClickListener {
             if(start.text.equals("stop")) {
+                time = SystemClock.elapsedRealtime()
                 stopwatch.stop()
                 start.text = "start"
             }
             else {
+                stopwatch.setBase(stopwatch.base + SystemClock.elapsedRealtime() - time)
                 stopwatch.start()
                 start.text = "stop"
             }
@@ -40,7 +44,9 @@ class MainActivity : AppCompatActivity() {
 
         reset.setOnClickListener {
             stopwatch.setBase(SystemClock.elapsedRealtime());
+            time = SystemClock.elapsedRealtime()
             stopwatch.stop();
+            start.text = "start"
         }
     }
 
@@ -49,8 +55,11 @@ class MainActivity : AppCompatActivity() {
         start = findViewById(R.id.button_main_start)
         reset = findViewById(R.id.button_main_reset)
 
+        stopwatch.base = SystemClock.elapsedRealtime()
         start.text = "start"
         reset.text = "reset"
+
+        time = stopwatch.base
     }
 
     override fun onStart() {
