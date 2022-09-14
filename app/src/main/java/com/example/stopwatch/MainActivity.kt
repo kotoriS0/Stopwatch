@@ -1,11 +1,14 @@
 package com.example.stopwatch
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.SystemClock
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.Chronometer
+import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,11 +36,13 @@ class MainActivity : AppCompatActivity() {
             if(start.text.equals("stop")) {
                 time = SystemClock.elapsedRealtime()
                 stopwatch.stop()
+                start.setBackgroundColor(Color.rgb(110, 0, 248))
                 start.text = "start"
             }
             else {
                 stopwatch.setBase(stopwatch.base + SystemClock.elapsedRealtime() - time)
                 stopwatch.start()
+                start.setBackgroundColor(Color.rgb(224, 70, 50))
                 start.text = "stop"
             }
         }
