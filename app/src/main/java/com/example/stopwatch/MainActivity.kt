@@ -53,7 +53,8 @@ class MainActivity : AppCompatActivity() {
             }
             else {
                 //stopwatch.base = stopwatch.base + SystemClock.elapsedRealtime() + time
-                stopwatch.base = savedInstanceState.getLong(STATE_BASE) +SystemClock.elapsedRealtime() - time
+                stopwatch.base = savedInstanceState.getLong(STATE_BASE) + SystemClock.elapsedRealtime() - time
+                time = SystemClock.elapsedRealtime()
             }
         }
 
